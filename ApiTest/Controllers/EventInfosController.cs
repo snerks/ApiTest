@@ -27,6 +27,8 @@ namespace ApiTest.Controllers
         {
             //return await _context.EventInfo.ToListAsync();
 
+            var awaitResult = await _context.EventInfo.ToListAsync();
+
             return new List<EventInfo> {
                 new EventInfo {
                     Id = 1,
