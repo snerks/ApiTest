@@ -16,18 +16,29 @@ namespace ApiTest.InMemory
             // Arrange
             //
             // DLL is here:
-            // C:\D\SamplesCore22\ApiTest\ApiTest.InMemory\bin\Debug\netcoreapp2.2
+            // C:\D\SamplesCore22\ApiTest\ApiTest.InMemory\bin\Debug\netcoreapp2.2\*.dll
+            // 
+            // ../ = C:\D\SamplesCore22\ApiTest\ApiTest.InMemory\bin\Debug\netcoreapp2.2
             // ../ = C:\D\SamplesCore22\ApiTest\ApiTest.InMemory\bin\Debug
             // ../ = C:\D\SamplesCore22\ApiTest\ApiTest.InMemory\bin
             // ../ = C:\D\SamplesCore22\ApiTest\ApiTest.InMemory
-            // ../ = C:\D\SamplesCore22\ApiTest
-            // ../ = C:\D\SamplesCore22
-            var contentRootPath = Path.GetFullPath("../../../../../ApiTest");
+            // ../ = C:\D\SamplesCore22\ApiTest (i.e. Solution folder)
 
-            var webHostBuilder = 
+            // DLL is here:
+            // ~\ApiTest\ApiTest.InMemory\bin\Debug\netcoreapp2.2\*.dll
+            // 
+            // ../ = ~\ApiTest\ApiTest.InMemory\bin\Debug\netcoreapp2.2
+            // ../ = ~\ApiTest\ApiTest.InMemory\bin\Debug
+            // ../ = ~\ApiTest\ApiTest.InMemory\bin
+            // ../ = ~\ApiTest\ApiTest.InMemory
+            // ../ = ~\ApiTest (i.e. Solution folder)
+            //var contentRootPath = Path.GetFullPath("../../../../../ApiTest");
+            //var contentRootPath = Path.GetFullPath("../../../../../ApiTest/ApiTest");
+
+            var webHostBuilder =
                 Program
-                .CreateWebHostBuilder(Array.Empty<string>())
-                .UseContentRoot(contentRootPath);
+                .CreateWebHostBuilder(Array.Empty<string>());
+                // .UseContentRoot(contentRootPath);
 
             var server = new TestServer(webHostBuilder);
             var client = server.CreateClient();
