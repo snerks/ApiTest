@@ -27,7 +27,13 @@ namespace ApiTest.Controllers
         {
             //return await _context.EventInfo.ToListAsync();
 
-            return new List<EventInfo> { new EventInfo { Id = 1, EventDate = DateTime.Now.AddMonths(1), Organiser = "Bob Smith" } };
+            return new List<EventInfo> {
+                new EventInfo {
+                    Id = 1,
+                    EventDate = DateTime.Now.AddMonths(1),
+                    Organiser = "Bob Smith"
+                }
+            };
         }
 
         // GET: api/EventInfos/5
